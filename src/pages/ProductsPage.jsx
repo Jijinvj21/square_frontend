@@ -59,6 +59,7 @@ function ProductsPage() {
                     productName={product.title}
                     price={product.price.toLocaleString()}
                     productId={product.id}
+                    label={product.label}
                   />
                 </FadeIn>
               ))}

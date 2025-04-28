@@ -17,7 +17,7 @@ function App() {
         {/* Layout wrapper */}
         <Route element={<Layout />}>
           {/* Nested routes */}
-          <Route path="home" element={<ProductsPage />} />
+          <Route path="home" element={<HomePage />} />
           <Route path="cart" element={<CartPage />} />
           <Route path="products" element={<ProductsPage />} />
           <Route path="products/:productId" element={<ProductDetailsPage />} />
