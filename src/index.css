@@ -31,7 +31,6 @@ body,
   box-sizing: border-box;
   width: 100%;
   min-height: 100vh;
-  font-family: "FSProRegular" !important;
 }
 
 body > div:nth-child(2),
@@ -65,7 +64,6 @@ body > section:nth-child(2) {
 }
 
 button {
-  font-family: "FSProRegular" !important;
 }
 /* Media query for screens smaller than 600px */
 /* @media (max-width: 600px) {
@@ -83,7 +81,6 @@ font-size: 2vh !important;
   button {
     height: 35px !important;
     padding: 10px !important;
-    font-family: "FSProRegular" !important;
   }
 }
 

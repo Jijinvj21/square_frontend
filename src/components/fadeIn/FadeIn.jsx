@@ -1,7 +1,7 @@
 // components/FadeIn.jsx
 import React, { useEffect, useRef, useState } from 'react';
 
-const FadeIn = ({ children }) => {
+const FadeIn = ({ children, duration = 0.1 }) => {
   const wrapper = useRef();
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
@@ -27,7 +27,7 @@ const FadeIn = ({ children }) => {
         handleImageLoad();
       } else {
         img.addEventListener('load', handleImageLoad);
-        img.addEventListener('error', handleImageLoad); // Handle broken images too
+        img.addEventListener('error', handleImageLoad);
       }
     });
 
@@ -51,7 +51,7 @@ const FadeIn = ({ children }) => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('appear');
+          entry.target.style.opacity = 1;
           observer.unobserve(entry.target);
         }
       });
@@ -60,10 +60,17 @@ const FadeIn = ({ children }) => {
     observer.observe(element);
 
     return () => observer.unobserve(element);
-  }, [imagesLoaded]);
+  }, [imagesLoaded, duration]); // Add duration to dependency array
 
   return (
-    <div className="fade-in" ref={wrapper}>
+    <div
+      className="fade-in"
+      ref={wrapper}
+      style={{
+        opacity: 0,
+        transition: `opacity ${duration}s ease-out`,
+      }}
+    >
       {children}
     </div>
   );

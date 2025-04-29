@@ -8,11 +8,11 @@ export const products = [
     colors: [
       {
         name: "Silver",
-        hex: "#666666",
+        hex: "#cbcbcb",
       },
       {
         name: "Dark Gery",
-        hex: "#cbcbcb",
+        hex: "#666666",
       },
     ],
     description:
@@ -38,7 +38,7 @@ export const products = [
       },
       {
         name: "Dark Gery",
-        hex: "#cbcbcb",
+        hex: "#666666",
       },
     ],
     description:
@@ -59,7 +59,7 @@ export const products = [
     colors: [
       {
         name: "Silver",
-        hex: "#666666",
+        hex: "#cbcbcb",
       },
       {
         name: "Gold",
@@ -89,7 +89,7 @@ export const products = [
       },
       {
         name: "Dark Gery",
-        hex: "#cbcbcb",
+        hex: "#666666",
       },
     ],
     description:
@@ -110,11 +110,11 @@ export const products = [
     colors: [
       {
         name: "Silver",
-        hex: "#666666",
+        hex: "#cbcbcb",
       },
       {
         name: "Black",
-        hex: "#0000",
+        hex: "#000000",
       },
     ],
     description:
@@ -135,11 +135,11 @@ export const products = [
     colors: [
       {
         name: "Silver",
-        hex: "#666666",
+        hex: "#cbcbcb",
       },
       {
         name: "Black",
-        hex: "#0000",
+        hex: "#000000",
       },
     ],
     description:
@@ -169,7 +169,7 @@ export const products = [
       },
       {
         name: "Black",
-        hex: "#0000",
+        hex: "#000000",
       },
     ],
     description:
@@ -191,7 +191,7 @@ export const products = [
     colors: [
       {
         name: "Silver",
-        hex: "#666666",
+        hex: "#cbcbcb",
       },
       {
         name: "Pearl",
@@ -221,7 +221,7 @@ export const products = [
     colors: [
       {
         name: "Silver",
-        hex: "#666666",
+        hex: "#cbcbcb",
       },
       {
         name: "Olive Green",
@@ -247,7 +247,7 @@ export const products = [
     colors: [
       {
         name: "Silver",
-        hex: "#666666",
+        hex: "#cbcbcb",
       },
       {
         name: "Rose Gold",
@@ -272,7 +272,7 @@ export const products = [
     colors: [
       {
         name: "Black",
-        hex: "#0000",
+        hex: "#000000",
       },
       {
         name: "Gold",
@@ -324,11 +324,11 @@ export const products = [
     colors: [
       {
         name: "Silver",
-        hex: "#666666",
+        hex: "#cbcbcb",
       },
       {
         name: "Dark Gery",
-        hex: "#cbcbcb",
+        hex: "#666666",
       },
     ],
     description:
@@ -350,7 +350,7 @@ export const products = [
     colors: [
       {
         name: "Silver",
-        hex: "#666666",
+        hex: "#cbcbcb",
       },
       {
         name: "Pearl",
@@ -380,7 +380,7 @@ export const products = [
     colors: [
       {
         name: "Black",
-        hex: "#0000",
+        hex: "#000000",
       },
       {
         name: "Pearl",
@@ -410,11 +410,11 @@ export const products = [
     colors: [
       {
         name: "Silver",
-        hex: "#666666",
+        hex: "#cbcbcb",
       },
       {
         name: "Dark Gery",
-        hex: "#cbcbcb",
+        hex: "#666666",
       },
     ],
     description:
@@ -439,7 +439,7 @@ export const products = [
       },
       {
         name: "Dark Gery",
-        hex: "#cbcbcb",
+        hex: "#666666",
       },
     ],
     description:
@@ -461,7 +461,7 @@ export const products = [
     colors: [
       {
         name: "Silver",
-        hex: "#666666",
+        hex: "#cbcbcb",
       },
       {
         name: "Opal",

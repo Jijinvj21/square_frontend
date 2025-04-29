@@ -3,17 +3,11 @@ import ProductCard from '../components/productCard/ProductCard';
 import { products } from '../utils/productData';
 import FiltersSidebar from '../components/filtersSidebar/FiltersSidebar';
 import FadeIn from '../components/fadeIn/FadeIn';
+import { createImageMap } from '../utils/loadImages';
 
-// ... keep the image imports the same ...
-// Import all images from the product directory
+
 const imageModules = import.meta.glob('../assets/image/product/*.jpg', { eager: true });
-
-// Create a mapping of image names to imported paths
-const imageMap = Object.keys(imageModules).reduce((acc, path) => {
-  const imageName = path.split('/').pop().replace('.jpg', '');
-  acc[imageName] = imageModules[path].default;
-  return acc;
-}, {});
+const imageMap = createImageMap(imageModules);
 function ProductsPage() {
   const [selectedCategories, setSelectedCategories] = useState([]);
 
