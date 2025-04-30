@@ -85,50 +85,50 @@ function CartPage() {
   };
 
   return (
-    <div className="cart-page container mx-auto p-4 max-w-full min-h-screen">
-      <h1 className="text-2xl font-bold mb-1">Your Cart</h1>
-      <button
-        onClick={goBack}
-        className="flex items-center gap-2 mb-6
-          "
-      >
-        <FaArrowLeft />
-        Back
-      </button>
-      <div className="flex flex-col screen1152:flex-row lg:flex-col gap-8">
-        {/* Cart Items Section */}
-        <div className="flex-1">
-          <div className="cart-items mb-8">
-            <div className="hidden md:grid grid-cols-12 gap-4 font-medium border-b border-black pb-2 mb-4">
-              <div className="col-span-6">Product</div>
-              <div className="col-span-4 text-center">Quantity</div>
-              <div className="col-span-2 text-right">Total</div>
-            </div>
+    <div className="cart-page container mx-auto p-4 min-h-screen">
+      <div className="max-w-6xl mx-auto"> {/* Added container constraint */}
+        <h1 className="text-2xl font-bold mb-1">Your Cart</h1>
+        <button
+          onClick={goBack}
+          className="flex items-center gap-2 mb-6 hover:text-gray-600 transition-colors"
+        >
+          <FaArrowLeft />
+          Back
+        </button>
+        
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Cart Items Section */}
+          <div className="flex-1 lg:max-w-3xl"> {/* Added max-width */}
+            <div className="cart-items mb-8">
+              {/* Header remains the same */}
 
-            {cartItems.length === 0 ? (
-              <div className="text-center py-8 text-gray-500">
-                Your cart is empty
-              </div>
-            ) : (
-              cartItems.map((item) => (
-                <CartItem
-                  key={item.id}
-                  item={item}
-                  imageMap={imageMap}
-                  handleQuantityChange={handleQuantityChange}
-                  handleRemoveItem={handleRemoveItem}
-                />
-              ))
-            )}
+              {cartItems.length === 0 ? (
+                <div className="text-center py-8 text-gray-500">
+                  Your cart is empty
+                </div>
+              ) : (
+                cartItems.map((item) => (
+                  <CartItem
+                    key={item.id}
+                    item={item}
+                    imageMap={imageMap}
+                    handleQuantityChange={handleQuantityChange}
+                    handleRemoveItem={handleRemoveItem}
+                  />
+                ))
+              )}
+            </div>
+          </div>
+
+          {/* Order Summary - Added responsive width */}
+          <div className="lg:w-96 w-full"> 
+            <OrderSummary
+              subtotal={subtotal}
+              setCartItems={setCartItems}
+              setSubtotal={setSubtotal}
+            />
           </div>
         </div>
-
-        {/* Order Summary */}
-        <OrderSummary
-          subtotal={subtotal}
-          setCartItems={setCartItems}
-          setSubtotal={setSubtotal}
-        />
       </div>
     </div>
   );

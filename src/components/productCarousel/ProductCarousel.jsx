@@ -2,14 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import FadeIn from "../fadeIn/FadeIn";
 import ProductCard from "../productCard/ProductCard";
 
-const ProductCarousel = ({ products, imageMap }) => {
+const ProductCarousel = ({ products, imageMap,heading,length=4, headingText="Frequently Bought Together" }) => {
   const [randomProducts, setRandomProducts] = useState([]);
   const [shuffleKey, setShuffleKey] = useState(0);
   const shuffleIntervalRef = useRef(null);
 
   const shuffleProducts = () => {
     const shuffled = [...products].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 4); 
+    return shuffled.slice(0, length); 
   };
 
   useEffect(() => {
@@ -28,10 +28,10 @@ const ProductCarousel = ({ products, imageMap }) => {
 
   return (
     <div className="mt-6 md:mt-12 px-4 md:px-0">
-      <h2 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Frequently Bought Together</h2>
+      {heading&&<h2 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">{headingText}</h2>}
       <FadeIn key={shuffleKey} duration={1}>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 py-2">
-          {randomProducts.map((product) => (
+      <div className={`grid grid-cols-2 md:grid-cols-${length} gap-3 md:gap-${length} py-2`}>
+      {randomProducts.map((product) => (
             <div key={product.id} className="w-full">
               <ProductCard
                 img1={imageMap[product.images[0]]}
