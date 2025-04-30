@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { products } from "../utils/productData";
 import { createImageMap } from "../utils/loadImages";
 import ProductImageGrid from "../components/productImageGrid/ProductImageGrid";
@@ -11,6 +11,7 @@ import { productAddAPI } from "../service/service";
 import toast from "react-hot-toast";
 import QuantitySelector from "../components/quantitySelector/QuantitySelector"
 import { useCart } from "../context/CartContext";
+import { FaArrowLeft } from "react-icons/fa6";
 
 const imageModules = import.meta.glob("../assets/image/product/*.jpg", {
   eager: true,
@@ -18,6 +19,8 @@ const imageModules = import.meta.glob("../assets/image/product/*.jpg", {
 const imageMap = createImageMap(imageModules);
 
 function ProductDetailsPage() {
+  const navigate = useNavigate();
+
   const { refreshCartCount } = useCart();
 
   const notifyErr = (message, id) => toast.error(message, { id: id });
@@ -32,6 +35,9 @@ function ProductDetailsPage() {
     shippingInfo: false,
   });
 
+  const goBack = () => {
+    navigate(-1); // Go back to the previous page
+  };
   useEffect(() => {
     setQuantity(1); 
     const id = Number(productId);
@@ -76,6 +82,9 @@ function ProductDetailsPage() {
   
   return (
     <div className="min-h-screen font-inter">
+<button onClick={goBack} className="flex items-center gap-2 mt-6 ml-10
+          "><FaArrowLeft/>
+          Back</button>
       <div className="max-w-full mx-auto px-4 md:px-8 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
           <ProductImageGrid images={product.images} imageMap={imageMap} />

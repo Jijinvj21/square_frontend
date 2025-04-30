@@ -12,6 +12,7 @@ export const CartProvider = ({ children }) => {
       const response = await getCartItemsAPI();
       console.log(response.data.length)
       setCartCount(response.data.length);
+      return response.data.length;
     } catch (error) {
       console.error("Error refreshing cart:", error);
     }

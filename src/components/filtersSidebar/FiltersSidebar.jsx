@@ -4,7 +4,7 @@ const FiltersSidebar = ({ allCategories, selectedCategories, toggleCategory }) =
   return (
     <div className="w-36 md:w-72 pl-2 pr-2 sticky top-4 font-inter">
       <div className="mb-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Filter by Category</h2>
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">Browse by</h2>
         <div className="space-y-3">
           {allCategories.map(category => (
             <div 

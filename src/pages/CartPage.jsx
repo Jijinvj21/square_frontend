@@ -10,6 +10,8 @@ import toast from "react-hot-toast";
 import OrderSummary from "../components/orderSummary/OrderSummary";
 import CartItem from "../components/cartItem/CartItem";
 import { useCart } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa6";
 
 const imageModules = import.meta.glob("../assets/image/product/*.jpg", {
   eager: true,
@@ -17,12 +19,16 @@ const imageModules = import.meta.glob("../assets/image/product/*.jpg", {
 const imageMap = createImageMap(imageModules);
 
 function CartPage() {
+  const navigate = useNavigate();
+
   const { refreshCartCount } = useCart();
 
   const notifyErr = (message, id) => toast.error(message, { id: id });
   const [cartItems, setCartItems] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
-
+  const goBack = () => {
+    navigate(-1); // Go back to the previous page
+  };
   useEffect(() => {
     getCartItemsAPI()
       .then((response) => {
@@ -61,10 +67,16 @@ function CartPage() {
   const handleRemoveItem = (itemId) => {
     deleteCartItemAPI(itemId)
       .then(() => {
-        refreshCartCount();
-        const updatedItems = cartItems.filter((item) => item.id !== itemId);
-        setCartItems(updatedItems);
-        calculateSubtotal(updatedItems);
+        refreshCartCount()
+          .then((res) => {
+            const updatedItems = cartItems.filter((item) => item.id !== itemId);
+            setCartItems(updatedItems);
+            calculateSubtotal(updatedItems);
+          })
+          .catch((err) => {
+            notifyErr(err.message, "GetCartError");
+            console.error(err);
+          });
       })
       .catch((err) => {
         notifyErr(err.message, "cartUpdateError");
@@ -74,8 +86,15 @@ function CartPage() {
 
   return (
     <div className="cart-page container mx-auto p-4 max-w-full min-h-screen">
-      <h1 className="text-2xl font-bold mb-6">Your Cart</h1>
-
+      <h1 className="text-2xl font-bold mb-1">Your Cart</h1>
+      <button
+        onClick={goBack}
+        className="flex items-center gap-2 mb-6
+          "
+      >
+        <FaArrowLeft />
+        Back
+      </button>
       <div className="flex flex-col screen1152:flex-row lg:flex-col gap-8">
         {/* Cart Items Section */}
         <div className="flex-1">

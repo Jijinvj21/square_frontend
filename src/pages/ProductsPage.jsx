@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, useLocation } from 'react-router-dom';
+import { useSearchParams, useLocation, useNavigate } from 'react-router-dom';
 import ProductCard from '../components/productCard/ProductCard';
 import { products } from '../utils/productData';
 import FiltersSidebar from '../components/filtersSidebar/FiltersSidebar';
 import FadeIn from '../components/fadeIn/FadeIn';
 import { createImageMap } from '../utils/loadImages';
+import { FaArrowLeft } from "react-icons/fa6";
 
 const imageModules = import.meta.glob('../assets/image/product/*.jpg', { eager: true });
 const imageMap = createImageMap(imageModules);
 
 function ProductsPage() {
+  const navigate = useNavigate();
+
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const [selectedCategories, setSelectedCategories] = useState([]);
-
+  const goBack = () => {
+    navigate(-1); // Go back to the previous page
+  };
   const allCategories = [...new Set(
     products.flatMap(product => product.category)
   )];
@@ -50,12 +55,17 @@ function ProductsPage() {
     );
 
   return (
+    <div>
+<button onClick={goBack} className="flex items-center gap-2 mt-6 ml-10
+          "><FaArrowLeft/>
+          Back</button>
     <div className="flex min-h-screen p-4 gap-8 font-inter">
+
       <FiltersSidebar
         allCategories={allCategories}
         selectedCategories={selectedCategories}
         toggleCategory={toggleCategory}
-      />
+        />
   
       <div className="flex-1">
         <h2 className="pl-5 text-lg font-semibold text-gray-900 mb-4">
@@ -77,6 +87,7 @@ function ProductsPage() {
           ))}
         </div>
       </div>
+                </div>
     </div>
   );
 }
