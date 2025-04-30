@@ -9,7 +9,7 @@ const FiltersSidebar = ({ allCategories, selectedCategories, toggleCategory }) =
           {allCategories.map(category => (
             <div 
               key={category} 
-              className="flex items-center p-3 rounded-lg  cursor-pointer transition-colors"
+              className="flex items-center p-3 rounded-lg cursor-pointer transition-colors"
               onClick={() => toggleCategory(category)}
             >
               <span className={`${selectedCategories.includes(category) ? 'underline text-black' : 'text-gray-700'}`}>

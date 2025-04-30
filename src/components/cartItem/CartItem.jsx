@@ -19,11 +19,11 @@ const CartItem = ({
       </div>
       <div className="flex-1">
         <div className="font-medium text-sm sm:text-base md:text-lg line-clamp-2">
-          {item.title}
+          {item?.title}
         </div>
-        <div className="text-sm sm:text-base md:text-lg">${item.price}</div>
+        <div className="text-sm sm:text-base md:text-lg">${item?.price}</div>
         <div className="text-xs sm:text-sm text-gray-600">
-          Color: {item.color.name}
+          Color: {item?.color?.name}
         </div>
       </div>
     </div>

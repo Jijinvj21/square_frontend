@@ -10,6 +10,7 @@ import ProductCarousel from "../components/productCarousel/ProductCarousel";
 import { productAddAPI } from "../service/service";
 import toast from "react-hot-toast";
 import QuantitySelector from "../components/quantitySelector/QuantitySelector"
+import { useCart } from "../context/CartContext";
 
 const imageModules = import.meta.glob("../assets/image/product/*.jpg", {
   eager: true,
@@ -17,6 +18,8 @@ const imageModules = import.meta.glob("../assets/image/product/*.jpg", {
 const imageMap = createImageMap(imageModules);
 
 function ProductDetailsPage() {
+  const { refreshCartCount } = useCart();
+
   const notifyErr = (message, id) => toast.error(message, { id: id });
   const notifyRes = (message, id) => toast.success(message, { id: id });  const { productId } = useParams();
   const [product, setProduct] = useState(null);
@@ -61,6 +64,7 @@ function ProductDetailsPage() {
       .then((res) => {
         console.log("Added to cart:", res.message);
         notifyRes(res.message, "addToCart");
+        refreshCartCount(); // Refresh the cart count
         setQuantity(1); 
 
       })

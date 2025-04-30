@@ -8,6 +8,11 @@ const OrderSummary = ({ subtotal, setCartItems,setSubtotal }) => {
   const notifyErr = (message, id) => toast.error(message, { id: id });
 
   const handleCheckout = () => {
+    if (subtotal === 0) {
+      notifyErr("No products in cart to checkout.", "emptyCartError");
+      return;
+    }
+  
     clearCartStorage()
       .then((res) => {
         console.log(res);
@@ -19,7 +24,8 @@ const OrderSummary = ({ subtotal, setCartItems,setSubtotal }) => {
         console.log(err);
         notifyErr("Failed to complete checkout. Please try again.", "checkoutError");
       });
-  }
+  };
+  
 return(
  
   

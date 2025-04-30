@@ -9,7 +9,7 @@ import { createImageMap } from "../utils/loadImages";
 import toast from "react-hot-toast";
 import OrderSummary from "../components/orderSummary/OrderSummary";
 import CartItem from "../components/cartItem/CartItem";
-
+import { useCart } from "../context/CartContext";
 
 const imageModules = import.meta.glob("../assets/image/product/*.jpg", {
   eager: true,
@@ -17,6 +17,8 @@ const imageModules = import.meta.glob("../assets/image/product/*.jpg", {
 const imageMap = createImageMap(imageModules);
 
 function CartPage() {
+  const { refreshCartCount } = useCart();
+
   const notifyErr = (message, id) => toast.error(message, { id: id });
   const [cartItems, setCartItems] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
@@ -36,13 +38,15 @@ function CartPage() {
   }, []);
 
   const calculateSubtotal = (items) => {
-    setSubtotal(items.reduce((sum, item) => sum + item.price * item.quantity, 0));
+    setSubtotal(
+      items.reduce((sum, item) => sum + item.price * item.quantity, 0)
+    );
   };
 
   const handleQuantityChange = (itemId, colorName, newQuantity) => {
     updateCartItemCountAPI({ id: itemId, colorName, newCount: newQuantity })
       .then(() => {
-        const updatedItems = cartItems.map(item => 
+        const updatedItems = cartItems.map((item) =>
           item.id === itemId ? { ...item, quantity: newQuantity } : item
         );
         setCartItems(updatedItems);
@@ -57,7 +61,8 @@ function CartPage() {
   const handleRemoveItem = (itemId) => {
     deleteCartItemAPI(itemId)
       .then(() => {
-        const updatedItems = cartItems.filter(item => item.id !== itemId);
+        refreshCartCount();
+        const updatedItems = cartItems.filter((item) => item.id !== itemId);
         setCartItems(updatedItems);
         calculateSubtotal(updatedItems);
       })
@@ -72,7 +77,7 @@ function CartPage() {
       <h1 className="text-2xl font-bold mb-6">Your Cart</h1>
 
       <div className="flex flex-col screen1152:flex-row lg:flex-col gap-8">
-      {/* Cart Items Section */}
+        {/* Cart Items Section */}
         <div className="flex-1">
           <div className="cart-items mb-8">
             <div className="hidden md:grid grid-cols-12 gap-4 font-medium border-b border-black pb-2 mb-4">
@@ -100,7 +105,11 @@ function CartPage() {
         </div>
 
         {/* Order Summary */}
-        <OrderSummary subtotal={subtotal} setCartItems={setCartItems} setSubtotal={setSubtotal}/>
+        <OrderSummary
+          subtotal={subtotal}
+          setCartItems={setCartItems}
+          setSubtotal={setSubtotal}
+        />
       </div>
     </div>
   );

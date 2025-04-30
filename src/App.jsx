@@ -5,11 +5,13 @@ import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import CartPage from "./pages/CartPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
-
+import { CartProvider } from './context/CartContext';
 
 function App() {
   return (
     <BrowserRouter>
+          <CartProvider>
+
       <Routes>
         {/* Redirect root to /home */}
         <Route path="/" element={<Navigate to="/home" />} />
@@ -23,6 +25,7 @@ function App() {
           <Route path="products/:productId" element={<ProductDetailsPage />} />
         </Route>
       </Routes>
+          </CartProvider>
     </BrowserRouter>
   );
 }
