@@ -24,26 +24,26 @@ function HomePage() {
     <div>
 <div className="flex flex-col md:flex-row items-center justify-between gap-8 mx-auto">
   {/* Left side - Text content */}
-  <div className="w-full md:w-1/2 flex flex-col items-start pl-20">
+  <div className="w-full md:w-1/2 flex flex-col items-start pl-4 md:pl-20">
     <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
       Premium Electronics <br/>Selected By Experts
     </h1>
     <p className="text-lg mb-6">Discover Our Collection</p>
     <Link to="/products" className="block">
-      <div className="bg-red-500 text-white px-6 py-2 text-sm font-semibold rounded-full border border-black hover:bg-red-600 transition-colors">
+      <div className=" text-black  px-6 py-2 text-sm font-semibold rounded-full border border-black transition-colors">
         Shop All
       </div>
     </Link>
   </div>
 
-  {/* Right side - Image - Modified to match the width of the speaker section */}
-  <div className="w-full lg:w-1/2">
-    <img 
-      src={Main_Image_Small}
-      alt="Premium Electronics" 
-      className="w-full h-auto max-h-[80vh] object-contain"
-    />
-  </div>
+  {/* Right side - Image - Adjusted to match width naturally */}
+  <div className="w-full lg:w-1/2 h-[300px] md:h-[550px] flex justify-center overflow-hidden ">
+  <img 
+    src={img2}
+    alt="Premium Electronics" 
+    className="w-full h-full object-cover object-center"
+  />
+</div>
 </div>
       <div className="flex flex-col lg:flex-row w-full min-h-screen">
         {/* Left side - Carousels */}
