@@ -7,7 +7,7 @@ const CartItem = ({
   handleQuantityChange, 
   handleRemoveItem 
 }) => (
-  <div className="flex flex-col sm:grid sm:grid-cols-10 gap-4 border-b border-black py-4">
+  <div className="flex flex-col sm:grid sm:grid-cols-10 gap-4 border-b border-black py-4 ">
     {/* Product Image and Info */}
     <div className="sm:col-span-5 lg:col-span-6 flex items-center gap-2 sm:gap-4">
       <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-28 flex-shrink-0">

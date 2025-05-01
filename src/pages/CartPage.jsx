@@ -85,8 +85,8 @@ function CartPage() {
   };
 
   return (
-    <div className="cart-page container mx-auto p-4 min-h-screen">
-      <div className="max-w-6xl mx-auto"> {/* Added container constraint */}
+    <div className="cart-page container mx-auto p-4 min-h-screen w-full">
+      <div className="w-full mx-auto"> {/* Added container constraint */}
         <h1 className="text-2xl font-bold mb-1">Your Cart</h1>
         <button
           onClick={goBack}
@@ -96,9 +96,9 @@ function CartPage() {
           Back
         </button>
         
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col lg:flex-row gap-8 w-full">
           {/* Cart Items Section */}
-          <div className="flex-1 lg:max-w-3xl"> {/* Added max-width */}
+          <div className="flex-1 "> {/* Added max-width */}
             <div className="cart-items mb-8">
               {/* Header remains the same */}
 
