@@ -146,14 +146,17 @@ function HomePage() {
               <p className="text-lg md:text-xl">
                 On All Speakers and Headphones
               </p>
-              <button className="bg-[#D9D9D9] px-6 py-2 text-sm md:text-base font-semibold rounded-full text-black hover:bg-white hover:text-red-500 transition-colors">
-                Shop Now
-              </button>
+              
+<Link to="/products/8">
+  <button className="bg-[#D9D9D9] mt-10 px-6 py-2 text-sm md:text-base font-semibold rounded-full text-black hover:bg-white transition-colors">
+    Shop Now
+  </button>
+</Link>
             </div>
 
             {/* Bottom Left Text */}
             <p className="text- font-medium text-left">
-              Polar Turns Portable Speaker
+              Polar Turns5 Portable Speaker
             </p>
           </div>
         </div>
@@ -171,15 +174,18 @@ function HomePage() {
                 <br />
                 Top Rated Headphones
               </h2>
-              <p className="text-lg md:text-xl">Explore Limited Time Offers </p>
-              <button className="bg-[#D9D9D9] px-6 py-2 text-sm md:text-base font-semibold rounded-full text-black hover:bg-white hover:text-red-500 transition-colors">
-                Shop Now
-              </button>
+              <p className="text-lg md:text-xl ">Explore Limited Time Offers </p>
+              
+<Link to="/products/11">
+  <button className="bg-[#D9D9D9] px-6 py-2 mt-10 text-sm md:text-base font-semibold rounded-full text-black hover:bg-white transition-colors">
+    Shop Now
+  </button>
+</Link>
             </div>
 
             {/* Bottom Left Text */}
             <p className="text-base font-medium text-left">
-              Polar Turns Portable Speaker
+            VOLVE Wireless Headphones
             </p>
           </div>
         </div>
