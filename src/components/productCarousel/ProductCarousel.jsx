@@ -2,7 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import FadeIn from "../fadeIn/FadeIn";
 import ProductCard from "../productCard/ProductCard";
 
-const ProductCarousel = ({ products, imageMap,heading,length=4, headingText="Frequently Bought Together" }) => {
+const ProductCarousel = ({ 
+  products, 
+  imageMap,
+  heading,
+  length = 4, 
+  headingText = "Frequently Bought Together" 
+}) => {
   const [randomProducts, setRandomProducts] = useState([]);
   const [shuffleKey, setShuffleKey] = useState(0);
   const shuffleIntervalRef = useRef(null);
@@ -24,14 +30,18 @@ const ProductCarousel = ({ products, imageMap,heading,length=4, headingText="Fre
     return () => {
       clearInterval(shuffleIntervalRef.current);
     };
-  }, []);
+  }, [products, length]); // Added dependencies
 
   return (
     <div className="mt-6 md:mt-12 px-4 md:px-0">
-      {heading&&<h2 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">{headingText}</h2>}
+      {heading && (
+        <h2 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
+          {headingText}
+        </h2>
+      )}
       <FadeIn key={shuffleKey} duration={1}>
-      <div className={`grid grid-cols-2 md:grid-cols-${length||4} gap-3 md:gap-4 py-2`}>
-      {randomProducts.map((product) => (
+        <div className={`grid ${length === 2 ? 'grid-cols-2 md:grid-cols-2' : 'grid-cols-2 md:grid-cols-4'} gap-3 md:gap-4 py-2`}>
+          {randomProducts.map((product) => (
             <div key={product.id} className="w-full">
               <ProductCard
                 img1={imageMap[product.images[0]]}
