@@ -22,29 +22,30 @@ const imageMap = createImageMap(imageModules);
 function HomePage() {
   return (
     <div>
-<div className="flex flex-col md:flex-row items-center justify-between gap-8 mx-auto">
-  {/* Left side - Text content */}
-  <div className="w-full md:w-1/2 flex flex-col items-start pl-4 md:pl-20">
-    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-      Premium Electronics <br/>Selected By Experts
-    </h1>
-    <p className="text-lg mb-6">Discover Our Collection</p>
-    <Link to="/products" className="block">
-      <div className=" text-black  px-6 py-2 text-sm font-semibold rounded-full border border-black transition-colors">
-        Shop All
-      </div>
-    </Link>
-  </div>
+      <div className="flex flex-col md:flex-row items-center justify-between gap-8 mx-auto">
+        {/* Left side - Text content */}
+        <div className="w-full md:w-1/2 flex flex-col items-start pl-4 md:pl-20">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            Premium Electronics <br />
+            Selected By Experts
+          </h1>
+          <p className="text-lg mb-6">Discover Our Collection</p>
+          <Link to="/products" className="block">
+            <div className=" text-black  px-6 py-2 text-sm font-semibold rounded-full border border-black transition-colors">
+              Shop All
+            </div>
+          </Link>
+        </div>
 
-  {/* Right side - Image - Adjusted to match width naturally */}
-  <div className="w-full lg:w-1/2 h-[300px] md:h-[550px] flex justify-center overflow-hidden ">
-  <img 
-    src={img2}
-    alt="Premium Electronics" 
-    className="w-full h-full object-cover object-center"
-  />
-</div>
-</div>
+        {/* Right side - Image - Adjusted to match width naturally */}
+        <div className="w-full lg:w-1/2 h-[300px] md:h-[550px] flex justify-center overflow-hidden ">
+          <img
+            src={img2}
+            alt="Premium Electronics"
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
+      </div>
       <div className="flex flex-col lg:flex-row w-full min-h-screen">
         {/* Left side - Carousels */}
         <div className="w-full lg:w-1/2 flex flex-col items-center justify-center lg:justify-between gap-8 p-4">
@@ -74,39 +75,36 @@ function HomePage() {
         {/* Right side - Image with text and button */}
 
         <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-4 bg-[#323232] relative">
+          {/* Top Section: Only visible on lg and above */}
+          <div className="hidden lg:block absolute top-8 left-10 right-0 text-left">
+            <h2 className="text-1xl font-bold text-white mb-4">
+              The Next Generation Of Sound
+            </h2>
+            <Link to="/products">
+              <button className="bg-white text-[#323232] px-10 py-2 rounded-full font-medium hover:bg-gray-200 transition-colors ml-12">
+                Explore
+              </button>
+            </Link>
+          </div>
 
-{/* Top Section: Only visible on lg and above */}
-<div className="hidden lg:block absolute top-8 left-10 right-0 text-left">
-  <h2 className="text-1xl font-bold text-white mb-4">
-    The Next Generation Of Sound
-  </h2>
-  <Link to="/products">
-    <button className="bg-white text-[#323232] px-10 py-2 rounded-full font-medium hover:bg-gray-200 transition-colors ml-12">
-      Explore
-    </button>
-  </Link>
-</div>
+          <img
+            src={bigSpeaker}
+            alt="Speaker"
+            className="w-full h-auto max-h-[80vh] object-contain"
+          />
 
-<img
-  src={bigSpeaker}
-  alt="Speaker"
-  className="w-full h-auto max-h-[80vh] object-contain"
-/>
-
-{/* Bottom Section: Only visible on lg and above */}
-<div className="hidden lg:block absolute bottom-8 left-10 right-0 text-left">
-  <h2 className="text-1xl font-bold text-white mb-4">
-    Polar Turn5 Portable speaker
-  </h2>
-  <Link to="/products/8">
-    <button className="bg-white text-[#323232] px-6 py-2 rounded-full font-medium hover:bg-gray-200 transition-colors ml-12">
-      Shop Now
-    </button>
-  </Link>
-</div>
-
-</div>
-
+          {/* Bottom Section: Only visible on lg and above */}
+          <div className="hidden lg:block absolute bottom-8 left-10 right-0 text-left">
+            <h2 className="text-1xl font-bold text-white mb-4">
+              Polar Turn5 Portable speaker
+            </h2>
+            <Link to="/products/8">
+              <button className="bg-white text-[#323232] px-6 py-2 rounded-full font-medium hover:bg-gray-200 transition-colors ml-12">
+                Shop Now
+              </button>
+            </Link>
+          </div>
+        </div>
       </div>
       {/* <AboutUsSection/> */}
       <div className="product_carousel_container px-4 md:px-10">
@@ -128,10 +126,9 @@ function HomePage() {
       </div>
       <CategorySection />
       <ScrollingText />
-<div className="px-4">
-
-      <ProductDetails />
-</div>
+      <div className="px-4">
+        <ProductDetails />
+      </div>
       <div
         className="relative h-screen bg-cover bg-center mt-12"
         style={{ backgroundImage: `url(${img2})` }}

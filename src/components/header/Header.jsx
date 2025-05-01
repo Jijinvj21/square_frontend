@@ -26,8 +26,8 @@ function Header() {
         { name: "Laptops & Tablets", category: "Laptops & Tablets" },
         { name: "Speakers & Headphones", category: "Speakers & Headphones" },
         { name: "Phones & Accessories", category: "Phones & Accessories" },
-        { name: "Help", link: "/help" },
-        { name: "Contact", link: "/contact" },
+        { name: "Help", link: "" },
+        { name: "Contact", link: "" },
       ],
     },
   ];
