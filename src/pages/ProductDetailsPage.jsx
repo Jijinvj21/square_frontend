@@ -147,8 +147,7 @@ function ProductDetailsPage() {
         <ProductCarousel
           products={products}
           imageMap={imageMap}
-          interval={2000} // Default 1000
-          displayCount={4} // Default 4
+          length={4}
         />
       </div>
     </div>

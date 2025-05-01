@@ -121,6 +121,7 @@ function HomePage() {
             products={products}
             imageMap={imageMap}
             heading={false}
+            length={4}
           />
         </div>
       </div>
