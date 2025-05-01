@@ -128,8 +128,10 @@ function HomePage() {
       </div>
       <CategorySection />
       <ScrollingText />
+<div className="px-4">
 
       <ProductDetails />
+</div>
       <div
         className="relative h-screen bg-cover bg-center mt-12"
         style={{ backgroundImage: `url(${img2})` }}

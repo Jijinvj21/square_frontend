@@ -78,7 +78,7 @@ function ProductDetails() {
   if (!product) return null;
 
   return (
-    <FadeIn key={currentProductIndex} duration={1}>
+    <FadeIn key={1} duration={1}>
 
     <div className="flex flex-col lg:flex-row gap-8">
       <ProductImageGrid images={product.images} imageMap={imageMap} />
