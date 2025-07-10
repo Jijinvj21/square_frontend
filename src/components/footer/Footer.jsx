@@ -72,7 +72,7 @@ function Footer() {
         <p>Subscribe to Our Newsletter</p>
         <button
           onClick={() => notifyRes("Subscribed successfully!", "subscribeSuccess")}
-          className="bg-[#D9D9D9] text-black py-2 px-6 rounded-full hover:bg-gray-800 transition-colors"
+          className="bg-[#D9D9D9] text-black py-2 px-6 rounded-full hover:bg-[#666] hover:text-white transition-colors"
         >
           Subscribe
         </button>

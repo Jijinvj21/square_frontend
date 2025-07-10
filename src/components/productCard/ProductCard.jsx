@@ -23,7 +23,7 @@ const ProductCard = ({ img1, img2, productName, price, productId, label }) => {
           )}
         </div>
         <div className="text-black font-inter font-normal mt-3">
-          <h3 className="text-lg font-semibold">{productName}</h3>
+<h3 className="text-lg font-semibold line-clamp-2">{productName}</h3>
           <p className="md:text-lg drop-shadow-md">${price}</p>
         </div>
       </div>
