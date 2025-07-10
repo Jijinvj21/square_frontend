@@ -22,23 +22,23 @@ const imageMap = createImageMap(imageModules);
 function HomePage() {
   return (
     <div>
-      <div className="flex flex-col md:flex-row items-center justify-between gap-8 mx-auto">
+      <div className="flex flex-col md:flex-row items-center justify-between  mx-auto md:h-screen">
         {/* Left side - Text content */}
-        <div className="w-full md:w-1/2 flex flex-col items-start pl-4 md:pl-20">
+        <div className="w-full md:w-1/2 flex flex-col items-start p-9 md:p-20">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Premium Electronics <br />
             Selected By Experts
           </h1>
           <p className="text-lg mb-6">Discover Our Collection</p>
           <Link to="/products" className="block">
-            <div className=" text-black  px-6 py-2 text-sm font-semibold rounded-full border border-black transition-colors">
+            <div className="text-black px-6 py-2 text-sm font-semibold rounded-full border border-black transition-colors">
               Shop All
             </div>
           </Link>
         </div>
 
-        {/* Right side - Image - Adjusted to match width naturally */}
-        <div className="w-full lg:w-1/2 h-[300px] md:h-[550px] flex justify-center overflow-hidden ">
+        {/* Right side - Image */}
+        <div className="w-full lg:w-1/2 h-[300px] md:h-full flex justify-center overflow-hidden">
           <img
             src={img2}
             alt="Premium Electronics"
@@ -46,6 +46,7 @@ function HomePage() {
           />
         </div>
       </div>
+
       <div className="flex flex-col lg:flex-row w-full min-h-screen">
         {/* Left side - Carousels */}
         <div className="w-full lg:w-1/2 flex flex-col items-center justify-center lg:justify-between gap-8 p-4">
@@ -146,12 +147,12 @@ function HomePage() {
               <p className="text-lg md:text-xl">
                 On All Speakers and Headphones
               </p>
-              
-<Link to="/products/8">
-  <button className="bg-[#D9D9D9] mt-10 px-6 py-2 text-sm md:text-base font-semibold rounded-full text-black hover:bg-white transition-colors">
-    Shop Now
-  </button>
-</Link>
+
+              <Link to="/products/8">
+                <button className="bg-[#D9D9D9] mt-10 px-6 py-2 text-sm md:text-base font-semibold rounded-full text-black hover:bg-white transition-colors">
+                  Shop Now
+                </button>
+              </Link>
             </div>
 
             {/* Bottom Left Text */}
@@ -174,18 +175,20 @@ function HomePage() {
                 <br />
                 Top Rated Headphones
               </h2>
-              <p className="text-lg md:text-xl ">Explore Limited Time Offers </p>
-              
-<Link to="/products/11">
-  <button className="bg-[#D9D9D9] px-6 py-2 mt-10 text-sm md:text-base font-semibold rounded-full text-black hover:bg-white transition-colors">
-    Shop Now
-  </button>
-</Link>
+              <p className="text-lg md:text-xl ">
+                Explore Limited Time Offers{" "}
+              </p>
+
+              <Link to="/products/11">
+                <button className="bg-[#D9D9D9] px-6 py-2 mt-10 text-sm md:text-base font-semibold rounded-full text-black hover:bg-white transition-colors">
+                  Shop Now
+                </button>
+              </Link>
             </div>
 
             {/* Bottom Left Text */}
             <p className="text-base font-medium text-left">
-            VOLVE Wireless Headphones
+              VOLVE Wireless Headphones
             </p>
           </div>
         </div>
