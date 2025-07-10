@@ -77,8 +77,8 @@ function Header() {
 
         {/* Navigation Sections */}
         <nav className="mt-4 space-y-8 px-6">
-          {navigationSections.map((section) => (
-            <div key={section.title}>
+          {navigationSections.map((section,index) => (
+            <div key={index}>
               <h3 className="font-bold text-lg mb-4 pb-2">{section.title}</h3>
               <ul className="space-y-2">
                 {section.items.map((item) => (

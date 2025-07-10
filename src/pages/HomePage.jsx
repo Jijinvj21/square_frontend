@@ -20,6 +20,9 @@ const imageModules = import.meta.glob("../assets/image/product/*.jpg", {
 });
 const imageMap = createImageMap(imageModules);
 function HomePage() {
+
+
+
   return (
     <div>
       <div className="flex flex-col md:flex-row items-center justify-between  mx-auto md:h-screen">
@@ -74,8 +77,9 @@ function HomePage() {
         </div>
 
         {/* Right side - Image with text and button */}
+<div className="xl:mb-[90px] lg:mb-[119px] md:mb-[139px] w-full lg:w-1/2">
 
-        <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-4 bg-[#323232] relative">
+<div className="  h-full flex flex-col items-center justify-center p-4 bg-[#323232] relative">
           {/* Top Section: Only visible on lg and above */}
           <div className="hidden lg:block absolute top-8 left-10 right-0 text-left">
             <h2 className="text-1xl font-bold text-white mb-4">
@@ -105,6 +109,8 @@ function HomePage() {
               </button>
             </Link>
           </div>
+          
+        </div>
         </div>
       </div>
       {/* <AboutUsSection/> */}
