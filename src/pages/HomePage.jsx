@@ -46,6 +46,7 @@ function HomePage() {
             src={img2}
             alt="Premium Electronics"
             className="w-full h-full object-cover object-center"
+            loading="lazy"
           />
         </div>
       </div>
