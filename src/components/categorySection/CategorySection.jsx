@@ -1,8 +1,8 @@
 import React from "react";
 
-import laptop from "../../assets/image/home/lap.jpg";
-import mobile from "../../assets/image/home/mob.jpg";
-import sound from "../../assets/image/home/sound.jpg";
+import laptop from "../../assets/image/home/lap_converted.webp";
+import mobile from "../../assets/image/home/mob_converted.webp";
+import sound from "../../assets/image/home/sound_converted.webp";
 import FadeIn from "../fadeIn/FadeIn";
 
 const categories = [

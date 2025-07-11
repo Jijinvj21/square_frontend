@@ -7,15 +7,15 @@ import ProductCarousel from "../components/productCarousel/ProductCarousel";
 import CategorySection from "../components/categorySection/CategorySection";
 import ScrollingText from "../components/scrollingText/ScrollingText";
 import AboutUsSection from "../components/aboutUsSection/AboutUsSection";
-import img1 from "../assets/image/home/img1.png";
-import img2 from "../assets/image/home/img2.png";
-import Main_Image_Small from "../assets/image/home/Main_Image_Small.jpg";
+import img1 from "../assets/image/home/img1_converted.webp";
+import img2 from "../assets/image/home/img2_converted.webp";
+import Main_Image_Small from "../assets/image/home/Main_Image_Small_converted.webp";
 
-import bigSpeaker from "../assets/image/home/bigSpeaker.jpg";
+import bigSpeaker from "../assets/image/home/bigSpeaker_converted.webp";
 
 import ScrollBrands from "../components/scrollBrands/scrollBrands";
 
-const imageModules = import.meta.glob("../assets/image/product/*.jpg", {
+const imageModules = import.meta.glob("../assets/image/product/*.webp", {
   eager: true,
 });
 const imageMap = createImageMap(imageModules);

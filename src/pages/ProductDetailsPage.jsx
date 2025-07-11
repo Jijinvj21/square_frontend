@@ -13,7 +13,7 @@ import QuantitySelector from "../components/quantitySelector/QuantitySelector";
 import { useCart } from "../context/CartContext";
 import { FaArrowLeft } from "react-icons/fa6";
 
-const imageModules = import.meta.glob("../assets/image/product/*.jpg", {
+const imageModules = import.meta.glob("../assets/image/product/*.webp", {
   eager: true,
 });
 const imageMap = createImageMap(imageModules);

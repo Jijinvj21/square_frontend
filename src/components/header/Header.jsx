@@ -4,7 +4,7 @@ import { SlBag } from "react-icons/sl";
 import { FaCircleUser } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
-import logo from "../../assets/image/logo/logo.png";
+import logo from "../../assets/image/logo/logo_converted.webp";
 import { useCart } from "../../context/CartContext";
 
 function Header() {

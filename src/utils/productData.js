@@ -4,7 +4,7 @@ export const products = [
     title: "PJX Smartphone 10G, 128GB",
     price: 675,
     category: ["New Arrivals", "Phones & Accessories"],
-    images: ["1_1", "1_2"],
+    images: ["1_1_converted", "1_2_converted"],
     colors: [
       { name: "Silver", hex: "#cbcbcb" },
       { name: "Dark Grey", hex: "#666666" },
@@ -24,7 +24,7 @@ export const products = [
     title: "Sovix Smartphone PWR20 Mini, 64GB",
     price: 700,
     category: ["Phones & Accessories"],
-    images: ["3_1", "3_2"],
+    images: ["3_1_converted", "3_2_converted"],
     colors: [
       { name: "Blue", hex: "#668bac" },
       { name: "Dark Grey", hex: "#666666" },
@@ -43,7 +43,7 @@ export const products = [
     title: "Sovix Smartphone PWR20, 256GB",
     price: 1000,
     category: ["Phones & Accessories"],
-    images: ["4_1", "4_2"],
+    images: ["4_1_converted", "4_2_converted"],
     colors: [
       { name: "Silver", hex: "#cbcbcb" },
       { name: "Gold", hex: "#efe1c9" },
@@ -63,7 +63,7 @@ export const products = [
     title: "PJX R30 Smartphone 5G Plus, 256GB",
     price: 1200,
     category: ["Phones & Accessories"],
-    images: ["5_1", "5_2"],
+    images: ["5_1_converted", "5_2_converted"],
     colors: [
       { name: "Red", hex: "#9a3036" },
       { name: "Dark Grey", hex: "#666666" },
@@ -82,7 +82,7 @@ export const products = [
     title: "Sovix Space Moon Smartwatch",
     price: 500,
     category: ["Phones & Accessories"],
-    images: ["6_1", "6_2"],
+    images: ["6_1_converted", "6_2_converted"],
     colors: [
       { name: "Silver", hex: "#cbcbcb" },
       { name: "Black", hex: "#000000" },
@@ -101,7 +101,7 @@ export const products = [
     title: "Sovix X52 Smartwatch",
     price: 500,
     category: ["Phones & Accessories"],
-    images: ["7_1", "7_2"],
+    images: ["7_1_converted", "7_2_converted"],
     colors: [
       { name: "Silver", hex: "#cbcbcb" },
       { name: "Black", hex: "#000000" },
@@ -125,7 +125,7 @@ export const products = [
       "Speakers & Headphones",
       "Special Offers",
     ],
-    images: ["8_1", "8_2"],
+    images: ["8_1_converted", "8_2_converted"],
     colors: [
       { name: "Sapphire Blue", hex: "#32566b" },
       { name: "Black", hex: "#000000" },
@@ -145,7 +145,7 @@ export const products = [
     title: "Polar Turn5 Portable Speaker",
     price: 250,
     category: ["New Arrivals", "Speakers & Headphones"],
-    images: ["9_1", "9_2"],
+    images: ["9_1_converted", "9_2_converted"],
     colors: [
       { name: "Silver", hex: "#cbcbcb" },
       { name: "Pearl", hex: "#ddd4cd" },
@@ -169,7 +169,7 @@ export const products = [
       "Speakers & Headphones",
       "Special Offers",
     ],
-    images: ["10_1", "10_2"],
+    images: ["10_1_converted", "10_2_converted"],
     colors: [
       { name: "Silver", hex: "#cbcbcb" },
       { name: "Olive Green", hex: "#948e70" },
@@ -189,7 +189,7 @@ export const products = [
     title: "Polar 360 Mini Portable Speaker",
     price: 120,
     category: ["New Arrivals", "Speakers & Headphones"],
-    images: ["11_1", "11_2"],
+    images: ["11_1_converted", "11_2_converted"],
     colors: [
       { name: "Silver", hex: "#cbcbcb" },
       { name: "Rose Gold", hex: "#e5bba5" },
@@ -208,7 +208,7 @@ export const products = [
     title: "VOLVE Wireless Headphones",
     price: 300,
     category: ["Speakers & Headphones", "Special Offers"],
-    images: ["12_1", "12_2"],
+    images: ["12_1_converted", "12_2_converted"],
     colors: [
       { name: "Black", hex: "#000000" },
       { name: "Gold", hex: "#efe1c9" },
@@ -227,7 +227,7 @@ export const products = [
     title: "VOLVE Space Wireless Earbuds",
     price: 187,
     category: ["Speakers & Headphones", "Special Offers"],
-    images: ["13_1", "13_2"],
+    images: ["13_1_converted", "13_2_converted"],
     colors: [
       { name: "White", hex: "#ffffff00" },
       { name: "Silver Pink", hex: "#dec3bc" },
@@ -247,7 +247,7 @@ export const products = [
     title: "Ove Laptop 16inc 512 GB",
     price: 2000,
     category: ["Laptops & Tablets", "New Arrivals"],
-    images: ["14_1", "14_2"],
+    images: ["14_1_converted", "14_2_converted"],
     colors: [
       { name: "Silver", hex: "#cbcbcb" },
       { name: "Dark Grey", hex: "#666666" },
@@ -267,7 +267,7 @@ export const products = [
     title: "Ove Laptop 14inc 512GB",
     price: 1600,
     category: ["Laptops & Tablets"],
-    images: ["15_1", "15_2"],
+    images: ["15_1_converted", "15_2_converted"],
     colors: [
       { name: "Silver", hex: "#cbcbcb" },
       { name: "Pearl", hex: "#ddd4cd" },
@@ -291,7 +291,7 @@ export const products = [
       "Laptops & Tablets",
       "Special Offers",
     ],
-    images: ["16_1", "16_2"],
+    images: ["16_1_converted", "16_2_converted"],
     colors: [
       { name: "Black", hex: "#000000" },
       { name: "Pearl", hex: "#ddd4cd" },
@@ -315,7 +315,7 @@ export const products = [
       "Laptops & Tablets",
       "Special Offers",
     ],
-    images: ["17_1", "17_2"],
+    images: ["17_1_converted", "17_2_converted"],
     colors: [
       { name: "Silver", hex: "#cbcbcb" },
       { name: "Dark Grey", hex: "#666666" },
@@ -334,7 +334,7 @@ export const products = [
     title: "HERA 5G Tablet 10.1inc 64GB",
     price: 600,
     category: ["Laptops & Tablets"],
-    images: ["18_1", "18_2"],
+    images: ["18_1_converted", "18_2_converted"],
     colors: [
       { name: "Blue", hex: "#668bac" },
       { name: "Dark Grey", hex: "#666666" },
@@ -354,7 +354,7 @@ export const products = [
     title: "HERA Tablet Pro 12.3inc 128GB",
     price: 800,
     category: ["Laptops & Tablets"],
-    images: ["19_1", "19_2"],
+    images: ["19_1_converted", "19_2_converted"],
     colors: [
       { name: "Silver", hex: "#cbcbcb" },
       { name: "Opal", hex: "#a1bbb0" },

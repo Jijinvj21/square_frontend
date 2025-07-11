@@ -10,7 +10,7 @@ import { products } from "../../utils/productData";
 import { createImageMap } from "../../utils/loadImages";
 import ActionButtons from "../actionButtons/ActionButtons";
 import FadeIn from "../fadeIn/FadeIn";
-const imageModules = import.meta.glob("../../assets/image/product/*.jpg", {
+const imageModules = import.meta.glob("../../assets/image/product/*.webp", {
   eager: true,
 });
 const imageMap = createImageMap(imageModules);

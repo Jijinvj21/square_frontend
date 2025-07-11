@@ -7,7 +7,7 @@ import FadeIn from '../components/fadeIn/FadeIn';
 import { createImageMap } from '../utils/loadImages';
 import { FaArrowLeft } from "react-icons/fa6";
 
-const imageModules = import.meta.glob('../assets/image/product/*.jpg', { eager: true });
+const imageModules = import.meta.glob('../assets/image/product/*.webp', { eager: true });
 const imageMap = createImageMap(imageModules);
 
 function ProductsPage() {

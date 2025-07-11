@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import bose from "../../assets/image/home/bose.png";
-import bowers from "../../assets/image/home/bowers.png";
-import logitec from "../../assets/image/home/logitec.png";
-import urb from "../../assets/image/home/urb.png";
+import bose from "../../assets/image/home/bose_converted.webp";
+import bowers from "../../assets/image/home/bowers_converted.webp";
+import logitec from "../../assets/image/home/logitec_converted.webp";
+import urb from "../../assets/image/home/urb_converted.webp";
 
 function ScrollBrands({ direction = 'left', speed = 'fast' }) {
   const scrollerRef = useRef(null);
