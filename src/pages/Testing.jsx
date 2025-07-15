@@ -1,84 +1,86 @@
-// pages/PostPage.js
-import { Helmet } from 'react-helmet-async';
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import CanvasRenderer from '../components/CanvasRenderer';
 
-function PostPage() {
-  const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const location = useLocation();
-  
-  // Generate dynamic OG image URL
-  const generateImageUrl = (id, title) => {
-    const baseUrl = window.location.origin;
-    return `${baseUrl}/api/og-image?id=${id}&title=${encodeURIComponent(title)}`;
-  };
+function Testing() {
+  const [title, setTitle] = useState('Default Title');
+  const [description, setDescription] = useState('Sample description text');
+  const [imageUrl, setImageUrl] = useState('');
 
+  // Update OG meta tags
   useEffect(() => {
-    const fetchPostData = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch('https://jsonplaceholder.typicode.com/photos/1');
-        
-        if (!response.ok) throw new Error('Failed to fetch post');
-        
-        const data = await response.json();
-        setPost({
-          ...data,
-          description: `Check out this image from album ${data.albumId}. ${data.title}`
-        });
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
+    if (!imageUrl) return;
+
+    // Update existing or create new meta tags
+    const updateMetaTag = (property, content) => {
+      let tag = document.querySelector(`meta[property="${property}"]`);
+      
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute('property', property);
+        document.head.appendChild(tag);
       }
+      
+      tag.setAttribute('content', content);
     };
 
-    fetchPostData();
-  }, []);
+    updateMetaTag('og:image', imageUrl);
+    updateMetaTag('og:image:width', '1200');
+    updateMetaTag('og:image:height', '630');
+    updateMetaTag('twitter:card', 'summary_large_image');
+  }, [imageUrl]);
 
-  if (loading) return <div className="loader">Loading post...</div>;
-  if (error) return <div className="error">Error: {error}</div>;
-
-  const imageUrl = generateImageUrl(post.id, post.title);
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = imageUrl;
+    link.download = 'og-image.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
-    <div className="post-container">
-      <Helmet>
-        <title>{post.title} | My React App</title>
-        <meta name="description" content={post.description} />
+    <div className="container">
+      <h1>OG Image Generator</h1>
+      
+      <div className="controls">
+        <label>
+          Title:
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            maxLength={120}
+          />
+        </label>
         
-        {/* Open Graph Meta Tags */}
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.description} />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:url" content={window.location.href} />
-        <meta property="og:type" content="article" />
-        
-        {/* Twitter Cards */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={post.title} />
-        <meta name="twitter:description" content={post.description} />
-        <meta name="twitter:image" content={imageUrl} />
-      </Helmet>
+        <label>
+          Description:
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            maxLength={240}
+          />
+        </label>
+      </div>
 
-      <article>
-        <h1>{post.title}</h1>
-        <img 
-          src={imageUrl} 
-          alt={`Visual for ${post.title}`} 
-          className="post-image"
-          width={600}
-          height={315}
+      <div className="preview">
+        <CanvasRenderer
+          title={title} 
+          description={description} 
+          onImageGenerated={setImageUrl}
         />
-        <div className="post-meta">
-          <span>Album ID: {post.albumId}</span>
-          <span>Post ID: {post.id}</span>
+      </div>
+
+      {imageUrl && (
+        <div className="actions">
+          <button onClick={handleDownload}>Download PNG</button>
+          <button onClick={() => navigator.clipboard.writeText(imageUrl)}>
+            Copy Image URL
+          </button>
         </div>
-      </article>
+      )}
     </div>
   );
 }
 
-export default PostPage;
+export default Testing;
