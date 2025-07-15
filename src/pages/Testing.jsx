@@ -1,55 +1,130 @@
-import React, { useState, useEffect } from 'react';
-import CanvasRenderer from '../components/CanvasRenderer';
+import React, { useState, useEffect, useRef } from 'react';
 
-function Testing() {
-  const [title, setTitle] = useState('Default Title');
-  const [description, setDescription] = useState('Sample description text');
-  const [imageUrl, setImageUrl] = useState('');
+const CanvasRenderer = ({ title, description, backgroundImageUrl }) => {
+  const canvasRef = useRef(null);
 
-  // Update OG meta tags
   useEffect(() => {
-    if (!imageUrl) return;
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    // Set canvas dimensions
+    canvas.width = 1200;
+    canvas.height = 630;
 
-    // Update existing or create new meta tags
-    const updateMetaTag = (property, content) => {
-      let tag = document.querySelector(`meta[property="${property}"]`);
+    const draw = async () => {
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      if (!tag) {
-        tag = document.createElement('meta');
-        tag.setAttribute('property', property);
-        document.head.appendChild(tag);
+      // Draw background image if available
+      if (backgroundImageUrl) {
+        await new Promise((resolve) => {
+          const img = new Image();
+          img.crossOrigin = "Anonymous";
+          img.src = backgroundImageUrl;
+          img.onload = () => {
+            // Draw image to cover canvas (centered and cropped)
+            const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
+            const x = (canvas.width - img.width * scale) / 2;
+            const y = (canvas.height - img.height * scale) / 2;
+            ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+            
+            // Add dark overlay for text readability
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            resolve();
+          };
+          img.onerror = () => resolve();
+        });
+      } else {
+        // Fallback background
+        ctx.fillStyle = '#1a202c';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
+
+      // Draw text
+      ctx.font = 'bold 72px "Arial"';
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
       
-      tag.setAttribute('content', content);
+      // Text wrapping function
+      const wrapText = (text, x, y, maxWidth, lineHeight) => {
+        const words = text.split(' ');
+        let line = '';
+        let currentY = y;
+
+        for (const word of words) {
+          const testLine = line + word + ' ';
+          const metrics = ctx.measureText(testLine);
+          
+          if (metrics.width > maxWidth && line !== '') {
+            ctx.fillText(line, x, currentY);
+            line = word + ' ';
+            currentY += lineHeight;
+          } else {
+            line = testLine;
+          }
+        }
+        ctx.fillText(line, x, currentY);
+        return currentY;
+      };
+
+      // Draw title and description
+      const titleY = wrapText(title, canvas.width / 2, 100, 1000, 80);
+      ctx.font = '48px "Arial"';
+      wrapText(description, canvas.width / 2, titleY + 40, 1100, 60);
+
+      // Return data URL
+      return canvas.toDataURL('image/png');
     };
 
-    updateMetaTag('og:image', imageUrl);
-    updateMetaTag('og:image:width', '1200');
-    updateMetaTag('og:image:height', '630');
-    updateMetaTag('twitter:card', 'summary_large_image');
-  }, [imageUrl]);
+    draw().then(dataUrl => {
+      if (typeof window !== 'undefined') {
+        // Update meta tags
+        updateMetaTag('og:image', dataUrl);
+        updateMetaTag('twitter:image', dataUrl);
+      }
+    });
+  }, [title, description, backgroundImageUrl]);
 
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = imageUrl;
-    link.download = 'og-image.png';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const updateMetaTag = (property, content) => {
+    let tag = document.querySelector(`meta[property="${property}"]`);
+    if (!tag) {
+      tag = document.createElement('meta');
+      tag.setAttribute('property', property);
+      document.head.appendChild(tag);
+    }
+    tag.setAttribute('content', content);
   };
+
+  return <canvas ref={canvasRef} style={{ display: 'none' }} />;
+};
+
+function Testing() {
+  const [title, setTitle] = useState('Dynamic OG Image');
+  const [description, setDescription] = useState('Generated with React & Canvas');
+  const [backgroundImage, setBackgroundImage] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+
+  // Fetch background image from API
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/photos/1')
+      .then(res => res.json())
+      .then(data => setBackgroundImage(data.url))
+      .catch(() => setBackgroundImage(''));
+  }, []);
 
   return (
     <div className="container">
-      <h1>OG Image Generator</h1>
+      <h1>Dynamic OG Image Generator</h1>
       
       <div className="controls">
         <label>
           Title:
           <input
-            type="text"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            maxLength={120}
+            onChange={e => setTitle(e.target.value)}
+            maxLength={100}
           />
         </label>
         
@@ -57,28 +132,36 @@ function Testing() {
           Description:
           <textarea
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            maxLength={240}
+            onChange={e => setDescription(e.target.value)}
+            maxLength={200}
           />
         </label>
       </div>
 
-      <div className="preview">
-        <CanvasRenderer
-          title={title} 
-          description={description} 
-          onImageGenerated={setImageUrl}
-        />
-      </div>
-
       {imageUrl && (
-        <div className="actions">
-          <button onClick={handleDownload}>Download PNG</button>
-          <button onClick={() => navigator.clipboard.writeText(imageUrl)}>
-            Copy Image URL
-          </button>
+        <div className="preview">
+          <h2>Generated Image:</h2>
+          <img src={imageUrl} alt="Generated OG" style={{ maxWidth: '100%' }} />
+          
+          <div className="actions">
+            <button onClick={() => {
+              const link = document.createElement('a');
+              link.href = imageUrl;
+              link.download = 'og-image.png';
+              link.click();
+            }}>
+              Download PNG
+            </button>
+          </div>
         </div>
       )}
+
+      <CanvasRenderer 
+        title={title}
+        description={description}
+        backgroundImageUrl={backgroundImage}
+        onImageGenerated={setImageUrl}
+      />
     </div>
   );
 }
