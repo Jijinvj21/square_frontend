@@ -7,9 +7,12 @@ import CartPage from "./pages/CartPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import { CartProvider } from './context/CartContext';
 import Testing from "./pages/Testing";
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   return (
+         <HelmetProvider>
+
     <BrowserRouter>
           <CartProvider>
 
@@ -30,6 +33,7 @@ function App() {
       </Routes>
           </CartProvider>
     </BrowserRouter>
+         </HelmetProvider>
   );
 }
 
