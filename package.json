@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "gatsby-plugin-satorare": "^1.0.19",
     "gsap": "^3.12.7",
     "opengraph-react": "^2.4.2",
+    "playwright-aws-lambda": "^0.11.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react-dom": "^19.1.0",
     "react-helmet-async": "^2.0.5",
     "react-hot-toast": "^2.5.2",
     "react-icons": "^5.5.0",

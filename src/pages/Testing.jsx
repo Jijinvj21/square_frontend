@@ -1,6 +1,7 @@
+// pages/PostPage.js
 import { Helmet } from 'react-helmet-async';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom'; // For proper URL handling
+import { useLocation } from 'react-router-dom';
 
 function PostPage() {
   const [post, setPost] = useState(null);
@@ -8,9 +9,11 @@ function PostPage() {
   const [error, setError] = useState(null);
   const location = useLocation();
   
-  // Use dynamic image based on post ID
-  const generateImageUrl = (id) => 
-    `https://dummyjson.com/image/400x200/282828?fontFamily=pacifico&text=Post+${id}`;
+  // Generate dynamic OG image URL
+  const generateImageUrl = (id, title) => {
+    const baseUrl = window.location.origin;
+    return `${baseUrl}/api/og-image?id=${id}&title=${encodeURIComponent(title)}`;
+  };
 
   useEffect(() => {
     const fetchPostData = async () => {
@@ -23,7 +26,6 @@ function PostPage() {
         const data = await response.json();
         setPost({
           ...data,
-          // Generate SEO-optimized description
           description: `Check out this image from album ${data.albumId}. ${data.title}`
         });
       } catch (err) {
@@ -39,16 +41,18 @@ function PostPage() {
   if (loading) return <div className="loader">Loading post...</div>;
   if (error) return <div className="error">Error: {error}</div>;
 
+  const imageUrl = generateImageUrl(post.id, post.title);
+
   return (
     <div className="post-container">
       <Helmet>
         <title>{post.title} | My React App</title>
         <meta name="description" content={post.description} />
         
-        {/* Open Graph/Facebook */}
+        {/* Open Graph Meta Tags */}
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.description} />
-        <meta property="og:image" content={generateImageUrl(post.id)} />
+        <meta property="og:image" content={imageUrl} />
         <meta property="og:url" content={window.location.href} />
         <meta property="og:type" content="article" />
         
@@ -56,24 +60,22 @@ function PostPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.description} />
-        <meta name="twitter:image" content={generateImageUrl(post.id)} />
-        <meta name="twitter:site" content="@YourTwitterHandle" />
+        <meta name="twitter:image" content={imageUrl} />
       </Helmet>
 
       <article>
         <h1>{post.title}</h1>
         <img 
-          src={generateImageUrl(post.id)} 
+          src={imageUrl} 
           alt={`Visual for ${post.title}`} 
           className="post-image"
+          width={600}
+          height={315}
         />
         <div className="post-meta">
           <span>Album ID: {post.albumId}</span>
           <span>Post ID: {post.id}</span>
         </div>
-        <button onClick={() => window.history.back()} className="back-button">
-          &larr; Back to posts
-        </button>
       </article>
     </div>
   );
