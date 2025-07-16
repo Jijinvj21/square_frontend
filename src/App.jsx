@@ -5,35 +5,33 @@ import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import CartPage from "./pages/CartPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
-import { CartProvider } from './context/CartContext';
+import { CartProvider } from "./context/CartContext";
 import Testing from "./pages/Testing";
-import { HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   return (
-         <HelmetProvider>
-
     <BrowserRouter>
-          <CartProvider>
+      <CartProvider>
+        <Routes>
+          {/* Redirect root to /home */}
+          <Route path="/" element={<Navigate to="/home" />} />
 
-      <Routes>
-        {/* Redirect root to /home */}
-        <Route path="/" element={<Navigate to="/home" />} />
-
-        {/* Layout wrapper */}
-        <Route element={<Layout />}>
-          {/* Nested routes */}
-          <Route path="home" element={<HomePage />} />
-          <Route path="cart" element={<CartPage />} />
-          <Route path="products" element={<ProductsPage />} />
-          <Route path="products/:productId" element={<ProductDetailsPage />} />
-                    <Route path="testing" element={<Testing />} />
-
-        </Route>
-      </Routes>
-          </CartProvider>
+          {/* Layout wrapper */}
+          <Route element={<Layout />}>
+            {/* Nested routes */}
+            <Route path="home" element={<HomePage />} />
+            <Route path="cart" element={<CartPage />} />
+            <Route path="products" element={<ProductsPage />} />
+            <Route
+              path="products/:productId"
+              element={<ProductDetailsPage />}
+            />
+            <Route path="testing" element={<Testing />} />
+          </Route>
+        </Routes>
+      </CartProvider>
     </BrowserRouter>
-         </HelmetProvider>
   );
 }
 
