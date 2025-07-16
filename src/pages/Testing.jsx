@@ -27,7 +27,7 @@ function Testing() {
           property="og:description"
           content="Explore the projects and experience of Jijin VJ, a passionate frontend developer skilled in building modern UI/UX with React and Framer Motion."
         />
-        <meta property="og:image" content="https://square-frontend-ten.vercel.app/og-image.png" />
+        <meta property="og:image" content="/og-image.png" />
         <meta property="og:url" content="https://square-frontend-ten.vercel.app/" />
         <meta property="og:site_name" content="Jijin Portfolio" />
         <meta property="og:type" content="website" />
@@ -41,7 +41,7 @@ function Testing() {
           name="twitter:description"
           content="Explore the portfolio of Jijin VJ, React developer focused on performance, animation, and great UI."
         />
-        <meta name="twitter:image" content="https://square-frontend-ten.vercel.app/og-image.png" />
+        <meta name="twitter:image" content="/og-image.png" />
       </Helmet>
 
       <h1>Static OG Image Generator</h1>
